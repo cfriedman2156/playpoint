@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playpoint</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.5/dist/full.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<header class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-2xl">PlayP🎯int</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="#">Social</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="bg-gray-700 p-10">
+  <section class="search">
+    <h1 class="text-4xl text-white text-center p-4">Search for a Game</h1>
+    <div class="text-center">
+      <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+    </div>
+        <div class="flex justify-center card-actions m-2">
+          <button class="btn btn-primary">Search</button>
+        </div>
+  </section>
+
+
+  <h1 class="text-4xl text-white text-center p-4">Popular Games</h1>
+  <section class="games flex flex-wrap justify-evenly">
+    
+    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
+      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
+      <div class="card-body">
+        <h2 class="card-title">GTA V</h2>
+        <div class="rating rating-xs">
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+        </div>
+        <p>Game description</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Watch</button>
+        </div>
+      </div>
+    </div>
+    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
+      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
+      <div class="card-body">
+        <h2 class="card-title">Elder Scrolls: Skyrim</h2>
+        <div class="rating rating-xs">
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+        </div>
+        <p>Game description</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Watch</button>
+        </div>
+      </div>
+    </div>
+    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
+      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
+      <div class="card-body">
+        <h2 class="card-title">Overwatch</h2>
+        <div class="rating rating-xs">
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+        </div>
+        <p>Game description</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Watch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
