@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+//const { now } = require("sequelize/types/utils");
 
 class Review extends Model {}
 Review.init({
@@ -10,7 +11,7 @@ Review.init({
     autoIncrement: true,
   },
   description: {
-    typeof: DataTypes.TEXT,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   game_id: {
@@ -40,12 +41,19 @@ Review.init({
     },
   },
   created_time: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DATE,
     allowNull: false,
+    defaultValue: DataTypes.NOW,
   },
   updated_time: {
-    type: DataTypes.TIME,
-    allowNull: true,
+    type: DataTypes.DATE,
+  } }, 
+  {
+  sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'review'
   }
-});
+);
 module.exports = Review;

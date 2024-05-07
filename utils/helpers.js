@@ -1,22 +1,19 @@
-const request = require("sync-request");
+
 
 // game list
 
-function gameList() {
+async function gameList() {
+  const url = "https://opencritic-api.p.rapidapi.com/game",
   const options = {
     method: "GET",
-    url: "https://opencritic-api.p.rapidapi.com/game",
-    qs: {
-      platforms: "all",
-      //   skip: "20",  this is for paging
-    },
     headers: {
       "X-RapidAPI-Key": "c4a75d9930msh9a64489fdec6eddp1ecc48jsnf0c05560708b",
       "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
     },
   };
 
-  const response = request(options.method, options.url, options);
+  const response = await fetch(url, options);
+  const games = response.json();
   if (response.statusCode === 200) {
     const responseBody= response.body.toString('utf8');
     const jsonData = JSON.parse(responseBody)
@@ -73,5 +70,5 @@ function gameTitle(title) {
       throw new Error(`Failed to fetch game list. Status code: ${response.statusCode}`);
     }
   }
-  const result = gameTitle("cooking mama")
-  console.log(result)
+  // const result = gameTitle("cooking mama")
+  // console.log(result)
