@@ -1,25 +1,32 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+// All this data will be coming from the api
 
-class Game extends Model {}
-Game.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true, 
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+// const { Model, DataTypes } = require('sequelize');
+// const sequelize = require('../config/connection');
 
-        },
-        description: {
-            typeof: DataTypes.TEXT,
-            allowNull: false,
-        },
+// class Game extends Model {}
+// Game.init(
+//     {
+//         id: {
+//             type: DataTypes.INTEGER,
+//             allowNull: false,
+//             primaryKey: true,
+//             autoIncrement: true, 
+//         },
         
-    },
-);
-module.exports = Game;
+        // name: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+
+        // },
+        // description: {
+        //     typeof: DataTypes.TEXT,
+        //     allowNull: false,
+        // },
+        // cover: {
+        //     typeof: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        
+//     },
+// );
+// module.exports = Game;
