@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playpoint</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.5/dist/full.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<header class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-2xl">PlayP🎯int</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="#">Social</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="bg-gray-700 p-10">
+    <div class="hero p-10 bg-base-200 rounded-3xl">
+        <div class="hero-content flex-col lg:flex-row">
+          <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" />
+          <div>
+            <h1 class="text-5xl font-bold">Overwatch</h1>
+            <div class="rating rating-lg">
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+              </div>
+            <p class="py-6">Overwatch was a 2016 team-based multiplayer first-person shooter game by Blizzard Entertainment. The game was first released for PlayStation 4, Windows, and Xbox One in May 2016 and Nintendo Switch in October 2019. Cross-platform play was supported across all platforms.</p>
+            
+            <!-- <button class="btn btn-primary">Write a Review</button> -->
+
+
+
+            <div class="collapse bg-base-200">
+                <input type="checkbox" /> 
+                <div class="collapse-title btn btn-primary">
+                  Write a Review
+                </div>
+                <div class="collapse-content flex flex-col"> 
+                    <!-- <input type="text" placeholder="Title" class="input input-bordered w-full max-w-xs" /> -->
+                    <textarea class="textarea textarea-bordered m-2" placeholder="Review"></textarea>
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+      <section class="review-section hero p-10 bg-base-200 rounded-3xl my-5">
+        <div class="flex flex-wrap justify-evenly lg:flex-row wrap">
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h2 class="card-title">Review Title</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+                  <p>By: Reviewer</p>
+                </div>
+            </div>
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h2 class="card-title">Review Title</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+                  <p>By: Reviewer</p>
+                </div>
+            </div>
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h2 class="card-title">Review Title</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+                  <p>By: Reviewer</p>
+                </div>
+            </div>
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h2 class="card-title">Review Title</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+                  <p>By: Reviewer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+

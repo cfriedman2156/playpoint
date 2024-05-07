@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -23,7 +23,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Missing email or password, please try again' });
       return;
     }
 

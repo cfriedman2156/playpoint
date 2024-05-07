@@ -1,17 +1,8 @@
 [
     {
-      "name": " ",
-      "email": " ",
-      "password": " "
-    },
-    {
-      "name": " ",
-      "email": " ",
-      "password": " "
-    },
-    {
-      "name": " ",
-      "email": " ",
-      "password": " "
+      "name": `${placeholder}`,
+      "email": "example@hotmail.com",
+      "password": "password12345"
     }
-  ]
+]
+  

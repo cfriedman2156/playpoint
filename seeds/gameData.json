@@ -1,12 +1,7 @@
 [
     {
-    "id": " ",
-    "name": " ",
-    "description": " "
-    },
-    {
-    "id": " ",
-    "name": " ",
-    "description": " "
+      "name": "Example",
+      "description": "Lorem Ipsum."
     }
-]
+  
+  ]

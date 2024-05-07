@@ -1,10 +1,7 @@
 [
     {
-    "name": " ",
-    "description": " "
-    },
-    {
-    "name": " ",
-    "description": " "
+      "name": "Example",
+      "description": "Lorem Ipsum."
     }
-]
+  
+  ]
