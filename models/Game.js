@@ -1,4 +1,4 @@
-//All this data will be coming from the api
+
 
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
