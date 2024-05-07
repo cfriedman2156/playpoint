@@ -73,5 +73,5 @@ function gameTitle(title) {
       throw new Error(`Failed to fetch game list. Status code: ${response.statusCode}`);
     }
   }
-  const result = gameTitle("cooking mama")
-  console.log(result)
+  // const result = gameTitle("cooking mama")
+  // console.log(result)
