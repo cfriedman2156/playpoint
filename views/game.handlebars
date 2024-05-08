@@ -1,0 +1,43 @@
+<main class="bg-gray-700 p-10">
+    <div class="hero p-10 bg-base-200 rounded-3xl">
+        <div class="hero-content flex-col lg:flex-row">
+          <img src="{{game.cover}}" class="max-w-sm rounded-lg shadow-2xl" />
+          <div>
+            <h1 class="text-5xl font-bold">{{game.name}}</h1>
+            <div class="rating rating-lg">
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+              </div>
+            <p class="py-6">{{game.description}}</p>
+            <div class="collapse bg-base-200">
+                <input type="checkbox" /> 
+                <div class="collapse-title btn btn-primary">
+                  Write a Review
+                </div>
+                <div class="collapse-content flex flex-col"> 
+                    <textarea class="textarea textarea-bordered m-2" placeholder="Review"></textarea>
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="review-section hero p-10 bg-base-200 rounded-3xl my-5">
+        <div class="flex flex-wrap justify-evenly lg:flex-row wrap">
+            {{#each reviews}}
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h2 class="card-title">{{name}}</h2>
+                  <p>{{description}}</p>
+                  <p>By: {{user.name}}</p>
+                </div>
+            </div>
+            {{/each}}
+            
+        </div>
+    </section>
+</main>
