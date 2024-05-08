@@ -26,4 +26,17 @@ router.get('/:id', async (req, res) => {
 
 module.exports = router;
 
-// put post delete
+
+// post is a new game
+router.post('/', async (req, res) => {
+    try {
+        const newGame = await Game.create({
+            ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newGame);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});

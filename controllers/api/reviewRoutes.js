@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Review } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//post -> creates the new review
 router.post('/', withAuth, async (req, res) => {
   try {
     const newReview = await Review.create({
@@ -15,6 +16,29 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+//put -> update an exisiting review
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const reviewData = await Review.findAll({
+      include: [
+        {
+          model: Review,
+          attributes: ['stars', 'description'],
+        },
+      ],
+    });
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+
+    res.render('homepage', {
+      reviews, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//deletes the review
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const reviewData = await Review.destroy({
@@ -35,4 +59,6 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+
 module.exports = router;
+
