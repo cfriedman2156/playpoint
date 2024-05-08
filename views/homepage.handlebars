@@ -2,10 +2,10 @@
   <section class="search">
     <h1 class="text-4xl text-white text-center p-4">Search for a Game</h1>
     <div class="text-center">
-      <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+      <input type="text" placeholder="Type here" id="search-input "class="input input-bordered w-full max-w-xs" />
     </div>
         <div class="flex justify-center card-actions m-2">
-          <button class="btn btn-primary">Search</button>
+          <button class="btn btn-primary" id="search-button">Search</button>
         </div>
   </section>
 
@@ -13,10 +13,11 @@
   <h1 class="text-4xl text-white text-center p-4">Popular Games</h1>
   <section class="games flex flex-wrap justify-evenly">
     
-    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
-      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
+    {{#each games}}
+    <div class="card game card-side bg-base-100 shadow-xl w-1/4 m-5">
+      <figure><img src="{{cover}}" alt="gta"/></figure>
       <div class="card-body">
-        <h2 class="card-title">GTA V</h2>
+        <h2 class="card-title">{{name}}</h2>
         <div class="rating rating-xs">
           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
@@ -24,46 +25,14 @@
           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
         </div>
-        <p>Game description</p>
+        <p>{{description}}</p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary">Watch</button>
+          <button class="btn btn-primary">View</button>
         </div>
       </div>
     </div>
-    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
-      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
-      <div class="card-body">
-        <h2 class="card-title">Elder Scrolls: Skyrim</h2>
-        <div class="rating rating-xs">
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-        </div>
-        <p>Game description</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">Watch</button>
-        </div>
-      </div>
-    </div>
-    <div class="card card-side bg-base-100 shadow-xl w-1/4 m-5">
-      <figure><img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="gta"/></figure>
-      <div class="card-body">
-        <h2 class="card-title">Overwatch</h2>
-        <div class="rating rating-xs">
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-          <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-        </div>
-        <p>Game description</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">Watch</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    {{/each}}
+
+<script src="/js/homepage.js"></script>
 
 </main>
