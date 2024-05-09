@@ -12,41 +12,73 @@
 
 <header class="navbar bg-base-100">
   <div class="flex-1">
-    <a class="btn btn-ghost text-2xl">PlayP🎯int</a>
+    <a class="btn btn-ghost text-3xl">PlayP🎯int</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="#">Social</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Logout</a></li>
+      <li class="text-lg"><a href="#">Social</a></li>
+      <li class="text-lg"><a href="#">Profile</a></li>
+      <li class="text-lg"><a href="#">Logout</a></li>
     </ul>
   </div>
 </header>
 
-<main class="bg-gray-700 flex flex-wrap justify-evenly p-10">
-    <section id="friend-list" class="card w-1/3 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">Friends List</h2>
-          <p>Friend 1</p>
-          <p>Friend 2</p>
-          <p>Friend 3</p>
+<main class="p-10 min-h-screen bg-cover" style="background-image: url(/public/assets/social2.jpg);">
+    <div class="flex flex-wrap justify-evenly p-10">
+      <section id="friend-list" class="card glass w-1/3 bg-base-100 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title text-white text-3xl pb-5">Friends List</h2>
+            <p class="text-white text-2xl">Friend 1</p>
+            <p class="text-white">Friend 2</p>
+            <p class="text-white">Friend 3</p>
+          </div>
+      </section>
+      <section id="add-friend" class="card glass w-1/3 bg-base-100 shadow-xl">
+          <div class="">
+              <div class="card-body">
+              <h2 class="card-title text-white text-3xl">Add Friend</h2>
+              <label class="input input-bordered flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
+                  <input type="text" class="grow" placeholder="Username" />
+              </label>
+              <div class="card-actions justify-end">
+                  <button class="btn btn-primary">Add Friend</button>
+              </div>
+              </div>
+          </div> 
+      </section>
+      <section class="glass review-section hero p-10 bg-base-200 rounded-3xl my-5">
+        <div>
+          <h1 class="text-3xl text-center text-white font-bold">Friends Reviews:</h1>
+          <div class="flex flex-wrap justify-evenly lg:flex-row wrap">
+            <div class="card w-96 m-5 bg-base-100 shadow-xl">
+              <div class="card-body">
+                  <div class="card-title flex justify-between">
+                      <h2>Game Title</h2>
+                          <div class="flex-none dropdown">
+                              <button tabindex="0" role="button" class="btn btn-square btn-ghost">
+                                <i class="fa-solid fa-ellipsis"></i>
+                              </button>
+                              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                  <li><a href="#">Update</a></li>
+                                  <li><a href="#">Delete</a></li>
+                                </ul>
+                          </div>
+                  </div>
+                  <div class="rating rating-xs">
+                      <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+                      <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
+                      <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+                      <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+                      <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+                  <p>By: Reviewer</p>
+              </div>
+          </div>
         </div>
     </section>
-    <section id="add-friend" class="card w-1/3 bg-base-100 shadow-xl">
-        <div class="">
-            <div class="card-body">
-            <h2 class="card-title">Add Friend</h2>
-            <label class="input input-bordered flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
-                <input type="text" class="grow" placeholder="Username" />
-            </label>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Add Friend</button>
-            </div>
-            </div>
-        </div> 
-    </section>
-
+    </div>
 </main>
 
 
