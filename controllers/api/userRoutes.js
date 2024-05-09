@@ -155,6 +155,7 @@ router.get('/social', async (req, res) => {
   }
 });
 
+//search for game
 router.get('/search/:searchItem', async (req, res) => {
   const fetch = require('node-fetch');
 
@@ -169,9 +170,8 @@ router.get('/search/:searchItem', async (req, res) => {
   
   try {
     const response = await fetch(url, options);
-    const result = await response.text();
-    res.json(JSON.parse(result));
-    console.log(result);
+    const result = await response.json();
+    res.json(result);
   } catch (error) {
     console.error(error);
   }

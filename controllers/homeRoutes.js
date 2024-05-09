@@ -15,7 +15,6 @@ router.get("/", async(req, res) => {
 
     const response = await fetch(url, options);
     const games = await response.json();
-    console.log(games);
     res.render("homepage", { games: games, logged_in: req.session.logged_in });  
 });
 
@@ -50,7 +49,7 @@ router.get('/profile', async (req, res) => {
           game: review.Game, 
       })) : [];
 
-      console.log(reviews); 
+      //console.log(reviews); 
 
       res.render('profile', {
           logged_in: req.session.logged_in,
@@ -116,11 +115,65 @@ router.get('/social', async (req, res) => {
   }
 });
 
-
-
-
-
 // game page
+router.get('/game/:id', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    }
+
+    try {
+        const gameId = req.params.id;
+
+            const url = `https://opencritic-api.p.rapidapi.com/game/${gameId}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+                    'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
+                }
+            };
+
+            const response = await fetch(url, options);
+            if (!response.ok) throw new Error('Failed to fetch from OpenCritic API');
+
+            const results = await response.json();
+            // console.log('results', results);
+            
+            const game = { 
+                name: results.name,
+                description: results.description,
+                image: results.images.box.og,
+                rapid_id: gameId
+            }
+
+            const gameData = await Game.findOne({
+                where: { rapid_id: gameId }, 
+                include: [{ model: Review }]
+            });
+
+            let reviews = [];
+            let userGame;
+
+            if (gameData) {
+                userGame = gameData.get({ plain: true });
+                reviews = userGame.reviews ? userGame.reviews : [];
+            }
+
+            
+
+            res.render('game', {
+                logged_in: req.session.logged_in,
+                game: game,
+                reviews: reviews
+            });
+
+    } catch (err) {
+        console.error("Error: ", err);
+        res.status(500).send("Internal Server Error: " + err.message);
+    }
+});
+
 
 
 module.exports = router;
