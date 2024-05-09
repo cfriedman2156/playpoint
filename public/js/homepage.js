@@ -1,13 +1,32 @@
 document.addEventListener("DOMContentLoaded", function() {
     function searchGame() {
-        const searchInput = document.getElementById("search-input").value.trim();
+        const searchInput = document.querySelector("#search-input").value.trim();
 
         if (!searchInput) {
             alert('Please enter a search query.');
             return;
         }
 
-        // make an AJAX request to search for the game and update the UI accordingly
+        fetch(`api/users/search/${encodeURIComponent(searchInput)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.length > 0) {
+                    const gameUrl = '/game/' + encodeURIComponent(data[0].id);
+                    console.log(data);
+                    window.location.href = gameUrl;
+                } else {
+                    alert('No game found with that name.');
+                }
+            })
+            .catch(error => {
+                console.error('Failed to fetch game:', error);
+                alert('Failed to search for the game. Please try again.');
+            });
     }
 
     const searchButton = document.getElementById("search-button");
