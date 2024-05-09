@@ -4,7 +4,7 @@ require("dotenv").config();
 
 // homepage
 router.get("/", async(req, res) => {
-    const url = "https://opencritic-api.p.rapidapi.com/game";
+    const url = "https://opencritic-api.p.rapidapi.com/game/popular";
     const options = {
         method: "GET",
         headers: {
@@ -115,6 +115,8 @@ router.get('/social', async (req, res) => {
       res.status(500).json(err);
   }
 });
+
+
 
 
 
