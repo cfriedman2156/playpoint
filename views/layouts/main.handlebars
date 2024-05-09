@@ -10,8 +10,35 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.5/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 
+<body>
+  <header class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-3xl" href="/">PlayP🎯int</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      {{#if logged_in}}
+      <li class="text-lg"><a href="/social">Social</a></li>
+      <li class="text-lg"><a href="/profile">Profile</a></li>
+      <li class="text-lg" id="logout"><a href="/login">Logout</a></li>
+      {{else}}
+      <li class="text-lg"><a href="/login">Login</a></li>
+      <li class="text-lg"><a href="/signup">Sign Up</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</header>
+  {{{ body }}}
+<footer class="footer footer-center p-4 bg-base-300 text-base-content">
+  <aside>
+    <p>Copyright © 2024 - All right reserved by Debug Thug Club (working title)</p>
+  </aside>
+</footer>
+  <script src="https://kit.fontawesome.com/df6c925d3f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
 
-{{{ body }}}
-
-
-<script src="https://cdn.tailwindcss.com"></script>
+</html>

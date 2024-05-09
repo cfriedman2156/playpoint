@@ -1,7 +1,17 @@
 [
     {
-      "name": `${placeholder}`,
+      "name": "mariedevil",
       "email": "example@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "batman",
+      "email": "batman@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "chase",
+      "email": "chase@hotmail.com",
       "password": "password12345"
     }
 ]
