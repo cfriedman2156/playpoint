@@ -155,4 +155,26 @@ router.get('/social', async (req, res) => {
   }
 });
 
+//search for game
+router.get('/search/:searchItem', async (req, res) => {
+  const fetch = require('node-fetch');
+
+  const url = `https://opencritic-api.p.rapidapi.com/game/search?criteria=${req.params.searchItem}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
+    }
+  };
+  
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = router;
