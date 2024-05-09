@@ -1,41 +1,47 @@
-document.addEventListener("DOMContentLoaded", function() {
-    function addFriend() {
-        const friendInput = document.getElementById("friend-input");
+document.addEventListener('DOMContentLoaded', () => {
+    const addFriendBtn = document.getElementById('add-friend-btn');
+    const friendInput = document.getElementById('friend-input');
+
+    addFriendBtn.addEventListener('click', async () => {
         const friendName = friendInput.value.trim();
 
-        if (!friendName) {
-            alert('Please enter a valid username.');
-            return;
-        }
+        if (friendName) {
+            try {
+                const response = await fetch(`/api/users/find-by-name`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: friendName })
+                });
 
-        const xhr = new XMLHttpRequest();
+                if (response.ok) {
+                    const friendData = await response.json();
 
-        xhr.open("POST", "/add-friend");
+                    const updateResponse = await fetch(`/api/users/add-friend`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ friendId: friendData.id })
+                    });
 
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        var data = JSON.stringify({ friendName: friendName });
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                alert(response.message); 
-            } else {
-                alert('Error adding friend: ' + xhr.statusText);
+                    if (updateResponse.ok) {
+                        alert('Friend added successfully!');
+                        location.reload(); 
+                    } else {
+                        const errorMessage = await updateResponse.text();
+                        alert(errorMessage);
+                    }
+                } else {
+                    alert('Friend not found');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while adding the friend');
             }
-        };
-
-        xhr.onerror = function() {
-            alert('Network error occurred while adding friend.');
-        };
-
-        xhr.send(data);
-    }
-
-    const addFriendBtn = document.getElementById("add-friend-btn");
-
-    addFriendBtn.addEventListener("click", function(event) {
-        event.preventDefault(); 
-        addFriend();
+        } else {
+            alert('Please enter a username');
+        }
     });
 });

@@ -1,4 +1,4 @@
-<main class="bg-gray-700 p-10">
+<main class="p-10 min-h-screen bg-cover" style="background-image: url(/assets/home.jpg);">
   <section class="search">
     <h1 class="text-4xl text-white text-center p-4">Search for a Game</h1>
     <div class="text-center">
@@ -15,7 +15,7 @@
     
     {{#each games}}
     <div class="card game card-side bg-base-100 shadow-xl w-1/4 m-5">
-      <figure><img src="{{cover}}" alt="gta"/></figure>
+      <figure><img src="{{cover}}" alt="{{name}} cover image"/></figure>
       <div class="card-body">
         <h2 class="card-title">{{name}}</h2>
         <div class="rating rating-xs">
