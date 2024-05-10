@@ -52,6 +52,7 @@ So what are you waiting for? Join the PlayPoint community today and embark on a 
 
 ## Setup Instructions
 
+**Deployable website:** https://playpoint.onrender.com/
 
 1. **Clone the repository:** git clone https://github.com/cfriedman2156/playpoint
 2. **Install dependencies:** cd playpoint, npm install
@@ -79,16 +80,28 @@ Open your web browser and navigate to `http://localhost:3001`
 
 
 ## Screenshots
-Put screen shots here ----->
 
+![Login Page IMG](/public/assets/PlayPoint_Screenshot_3.jpg) - Login Page
+
+![Home Page IMG](/public/assets/PlayPoint_Screenshot_1.jpg)- Home Page
+
+![Profile Page IMG](/public/assets/PlayPoint_Screenshot_5.jpg)- Profile Page
+
+![Review Page IMG](/public/assets/PlayPoint_Screenshot_2.jpg)- Review Page
+
+![Social Page IMG](/public/assets/PlayPoint_Screenshot_4.jpg)- Social Page
+
+
+
+## Presentation
+
+Google slides link for our projects presentaion: https://docs.google.com/presentation/d/1VFpNj_3dsrOxl1w9o9KeQWXZwBOEmkGtipgZX4MJRh8/edit?usp=sharing
 
 ## Contributing
-
 
 Contributions are welcome! If you have any ideas for improvements or new features, feel free to open an issue or submit a pull request!
 
 ## License
-
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
