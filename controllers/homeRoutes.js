@@ -36,25 +36,23 @@ router.get('/profile', async (req, res) => {
               }]
           }]
       });
-
+      console.log("User Data Fetched: ", JSON.stringify(userData, null, 2));
       if (!userData) {
           res.status(404).send("User not found");
           return;
       }
 
       const user = userData.get({ plain: true });
-
-      const reviews = user.Reviews ? user.Reviews.map(review => ({
-        gameName: review.Game.name, // Check if 'Game' data is available here
-        description: review.description,
-        stars: review.stars
-    })) : [];
-    //   const reviews = user.Reviews ? user.Reviews.map(review => ({
-    //       ...review,
-    //       game: review.Game, 
-    //   })) : [];
-
-      //console.log(reviews); 
+      console.log("Plain User Data: ", JSON.stringify(user, null, 2));
+      const reviews = user.reviews ? user.reviews.map(review => {
+        console.log("Review being processed:", JSON.stringify(review, null, 2)); // This will log each review
+        return {
+            gameName: review.game ? review.game.name : "No game associated",
+            description: review.description,
+            stars: review.stars || 'No rating' // Handling cases where stars might be null
+        };
+    }) : [];
+    console.log("Reviews Data to Render: ", JSON.stringify(reviews, null, 2)); // This logs the reviews data array
 
       res.render('profile', {
           logged_in: req.session.logged_in,
