@@ -121,7 +121,6 @@ router.get('/social', async (req, res) => {
 
         let friendsReviews = [];
         userWithFriends.Friends.forEach(friend => {
-            // Notice the lowercase 'reviews' used here to match your actual data structure
             if (friend.reviews && Array.isArray(friend.reviews)) {
                 console.log(`Reviews for ${friend.name}:`, friend.reviews);
                 friend.reviews.forEach(review => {
@@ -150,38 +149,6 @@ router.get('/social', async (req, res) => {
     }
 });
 
-
-
-  
-// router.get('/social', async (req, res) => {
-//   if (!req.session.logged_in) {
-//       res.redirect('/login');
-//       return;
-//   }
-
-//   try {
-//       const userWithFriends = await User.findByPk(req.session.user_id, {
-//           include: [
-//               {
-//                   model: User,
-//                   as: 'Friends'
-//               }
-//           ]
-//       });
-
-//       const friends = userWithFriends.Friends.map(friend => ({
-//           name: friend.name 
-//       }));
-
-//       res.render('social', {
-//           logged_in: req.session.logged_in,
-//           friends: friends
-//       });
-//   } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//   }
-// });
 
 // game page
 router.get('/game/:id', async (req, res) => {

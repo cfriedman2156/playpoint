@@ -27,11 +27,8 @@ router.get('/:id', async (req, res) => {
 
 module.exports = router;
 
-// put post delete code below
 
-
-
-//POST  Ask Drew/Kyle if we need to specify '/:id' for adding new game being reviewed to storage table
+//POST  
 router.post('/', async (req, res) => {
     try {
         const {name, gameDescription, cover, rapid_id, reviewDescription, stars} = req.body;
