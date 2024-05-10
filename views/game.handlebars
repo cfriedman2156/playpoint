@@ -3,7 +3,7 @@
         <div class="hero-content flex-col lg:flex-row">
           <img src="https://img.opencritic.com/{{game.image}}" alt="{{game.name}} cover image" class="max-w-sm rounded-lg shadow-2xl" />
           <div>
-            <h1 class="text-5xl font-bold">{{game.name}}</h1>
+            <h1 class="text-5xl font-bold" id="game-name">{{game.name}}</h1>
             <div class="rating rating-lg">
                 <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
                 <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
@@ -11,15 +11,15 @@
                 <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
                 <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
               </div>
-            <p class="py-6">{{game.description}}</p>
+            <p class="py-6" id="game-description">{{game.description}}</p>
             <div class="collapse bg-base-200">
                 <input type="checkbox" /> 
                 <div class="collapse-title btn btn-primary">
                   Write a Review
                 </div>
                 <div class="collapse-content flex flex-col"> 
-                    <textarea class="textarea textarea-bordered m-2" placeholder="Review"></textarea>
-                    <button class="btn btn-primary">Submit</button>
+                    <textarea class="textarea textarea-bordered m-2" name="reviewText" placeholder="Review" id="reviewText"></textarea>
+                    <button class="btn btn-primary" id="submitReview">Submit</button>
                 </div>
               </div>
           </div>
@@ -41,3 +41,5 @@
         </div>
     </section>
 </main>
+
+<script src="/js/game.js"></script>
