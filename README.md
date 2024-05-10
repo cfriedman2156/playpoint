@@ -56,11 +56,11 @@ So what are you waiting for? Join the PlayPoint community today and embark on a 
 1. **Clone the repository:** git clone https://github.com/cfriedman2156/playpoint
 2. **Install dependencies:** cd playpoint, npm install
 3. **Set up environment variables:** Create a `.env` file in the root directory and add the following variables:
- DB_NAME='playpoint_db',
- DB_USER='postgres',
- DB_PASSWORD='',
- DB_URL='localhost',
- RAPIDAPI_KEY='',
+DB_NAME='playpoint_db',
+DB_USER='postgres',
+DB_PASSWORD='',
+DB_PORT='localhost',
+RAPIDAPI_KEY='',
 4. **Start the server:**
 npm start
 5. **Seed data:**
