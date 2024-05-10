@@ -45,9 +45,14 @@ router.get('/profile', async (req, res) => {
       const user = userData.get({ plain: true });
 
       const reviews = user.Reviews ? user.Reviews.map(review => ({
-          ...review,
-          game: review.Game, 
-      })) : [];
+        gameName: review.Game.name, // Check if 'Game' data is available here
+        description: review.description,
+        stars: review.stars
+    })) : [];
+    //   const reviews = user.Reviews ? user.Reviews.map(review => ({
+    //       ...review,
+    //       game: review.Game, 
+    //   })) : [];
 
       //console.log(reviews); 
 
@@ -138,7 +143,6 @@ router.get('/game/:id', async (req, res) => {
             if (!response.ok) throw new Error('Failed to fetch from OpenCritic API');
 
             const results = await response.json();
-            // console.log('results', results);
             
             const game = { 
                 name: results.name,
@@ -149,18 +153,22 @@ router.get('/game/:id', async (req, res) => {
 
             const gameData = await Game.findOne({
                 where: { rapid_id: gameId }, 
-                include: [{ model: Review }]
+                include: [{
+                    model: Review,
+                    include: [{ model: User, attributes: ['name'] }]
+                }]
             });
 
             let reviews = [];
             let userGame;
 
             if (gameData) {
-                userGame = gameData.get({ plain: true });
-                reviews = userGame.reviews ? userGame.reviews : [];
+                const userGame = gameData.get({ plain: true });
+                reviews = userGame.reviews ? userGame.reviews.map(review => ({
+                    description: review.description,
+                    user: { name: review.user.name }
+                })) : [];
             }
-
-            
 
             res.render('game', {
                 logged_in: req.session.logged_in,

@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Game, Review, User } = require('../../models');
-const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
     try {
@@ -48,6 +47,8 @@ router.post('/', async (req, res) => {
 
 // POST route to add a review
 router.post('/reviews', async (req, res) => {
+    console.log(req);
+    console.log(res);
     try {
         const newReview = await Review.create({
             description: req.body.description,
@@ -62,3 +63,18 @@ router.post('/reviews', async (req, res) => {
         res.status(500).json({ error: 'Failed to create review' });
     }
 });
+
+// GET game ID by rapid_id
+router.get('/find-by-rapid-id/:rapidId', async (req, res) => {
+    try {
+        const game = await Game.findOne({ where: { rapid_id: req.params.rapidId } });
+        if (!game) {
+            res.status(404).json({ message: 'No game found with this rapid ID!' });
+            return;
+        }
+        res.status(200).json({ id: game.id });
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
