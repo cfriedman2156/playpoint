@@ -16,47 +16,47 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // Updating a review
-router.put("/:id", withAuth, async (req, res) => {
-  try {
-    const reviewData = await Review.findAll({
-      include: [
-        {
-          model: Review,
-          attributes: ["stars", "description"],
-        },
-      ],
-    });
-    const reviews = reviewData.map((review) => review.get({ plain: true }));
+router.put('/:id', withAuth, async (req, res) => {
 
-    // Ask Drew/Kyle about homepage (thinking of putting profile)...
-    res.render("profile", {
-      reviews,
-      logged_in: req.session.logged_in,
-    });
+  try {
+      const updatedReview = await Review.update(
+          { description: req.body.description },
+          { where: { id: req.params.id, user_id: req.session.user_id } }
+      );
+      if (updatedReview[0] > 0) { 
+          res.json({ message: 'Review updated successfully' });
+      } else {
+          res.status(404).json({ message: 'No review found with this ID' });
+      }
   } catch (err) {
-    res.status(500).json(err);
+      console.error('Error updating review:', err); 
+      res.status(500).json({ error: 'Failed to update review' });
   }
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+
+
+//delete review
+router.delete('/:id', withAuth, async (req, res) => {
+  console.log('Received delete request for review ID:', req.params.id);  
   try {
-    const reviewData = await Review.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!reviewData) {
-      res.status(404).json({ message: "No review found with this id!" });
-      return;
-    }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
+      const result = await Review.destroy({
+          where: {
+              id: req.params.id,
+              user_id: req.session.user_id,
+          }
+      });
+      if (result > 0) {
+          res.json({ message: 'Review deleted successfully' });
+      } else {
+          res.status(404).send({ message: 'No review found with this ID' });
+      }
+  } catch (error) {
+      console.error('Error during review deletion:', error);  
+      res.status(500).json({ error: 'Failed to delete review' });
   }
 });
+
 
 
 module.exports = router;

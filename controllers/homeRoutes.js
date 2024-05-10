@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Game, Review, User } = require("../models");
+const { Game, Review, User, Friendship } = require("../models");
 require("dotenv").config();
 
 // homepage
@@ -36,23 +36,23 @@ router.get('/profile', async (req, res) => {
               }]
           }]
       });
-      console.log("User Data Fetched: ", JSON.stringify(userData, null, 2));
+      
       if (!userData) {
           res.status(404).send("User not found");
           return;
       }
 
       const user = userData.get({ plain: true });
-      console.log("Plain User Data: ", JSON.stringify(user, null, 2));
+      
       const reviews = user.reviews ? user.reviews.map(review => {
-        console.log("Review being processed:", JSON.stringify(review, null, 2)); // This will log each review
+        
         return {
             gameName: review.game ? review.game.name : "No game associated",
             description: review.description,
-            stars: review.stars || 'No rating' // Handling cases where stars might be null
+            id: review.id,
+            stars: review.stars || 'No rating' 
         };
     }) : [];
-    console.log("Reviews Data to Render: ", JSON.stringify(reviews, null, 2)); // This logs the reviews data array
 
       res.render('profile', {
           logged_in: req.session.logged_in,
@@ -87,36 +87,68 @@ router.get('/signup', (req, res) => {
   });
 
 // social
-
 router.get('/social', async (req, res) => {
-  if (!req.session.logged_in) {
-      res.redirect('/login');
-      return;
-  }
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    }
 
-  try {
-      const userWithFriends = await User.findByPk(req.session.user_id, {
-          include: [
-              {
-                  model: User,
-                  as: 'Friends'
-              }
-          ]
-      });
+    try {
+        const userWithFriends = await User.findByPk(req.session.user_id, {
+            include: [
+                {
+                    model: User,
+                    as: 'Friends',
+                    include: [{
+                        model: Review,
+                        include: [Game]
+                    }]
+                }
+            ]
+        });
 
-      const friends = userWithFriends.Friends.map(friend => ({
-          name: friend.name 
-      }));
+        if (!userWithFriends) {
+            res.status(404).send("User not found");
+            return;
+        }
 
-      res.render('social', {
-          logged_in: req.session.logged_in,
-          friends: friends
-      });
-  } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-  }
+        const friends = userWithFriends.Friends.map(friend => ({
+            id: friend.id,
+            name: friend.name
+        }));
+
+        console.log('Friends:', friends);
+
+        let friendsReviews = [];
+        userWithFriends.Friends.forEach(friend => {
+            if (friend.reviews && Array.isArray(friend.reviews)) {
+                console.log(`Reviews for ${friend.name}:`, friend.reviews);
+                friend.reviews.forEach(review => {
+                    friendsReviews.push({
+                        friendName: friend.name,
+                        gameName: review.game.name,
+                        description: review.description,
+                        rating: review.stars
+                    });
+                });
+            } else {
+                console.log(`No reviews found for ${friend.name}`);
+            }
+        });
+
+        console.log('Friends Reviews:', friendsReviews);
+
+        res.render('social', {
+            logged_in: req.session.logged_in,
+            friends: friends,
+            friendsReviews: friendsReviews
+        });
+    } catch (error) {
+        console.error('Error fetching friends and reviews:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
+
 
 // game page
 router.get('/game/:id', async (req, res) => {

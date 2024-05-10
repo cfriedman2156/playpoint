@@ -2,17 +2,27 @@
     {
       "name": "mariedevil",
       "email": "example@hotmail.com",
-      "password": "password12345"
+      "password": "password12345",
+      "user_id": 1
     },
     {
       "name": "batman",
       "email": "batman@hotmail.com",
-      "password": "password12345"
+      "password": "password12345",
+      "user_id": 2
+
     },
     {
       "name": "chase",
       "email": "chase@hotmail.com",
-      "password": "password12345"
+      "password": "password12345",
+      "user_id": 3
+    },
+    {
+      "name": "paulee",
+      "email": "pauleerama93@gmail.com",
+      "password": "password12345",
+      "user_id": 4
     }
 ]
   
