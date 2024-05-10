@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Game, Review } = require('../../models');
+const { Game, Review, User } = require('../../models');
+const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
     try {
@@ -41,5 +42,23 @@ router.post('/', async (req, res) => {
         res.status(200).json("successfully created game review!");
     } catch (error) {
         res.status(500).json(error);
+    }
+});
+
+
+// POST route to add a review
+router.post('/reviews', async (req, res) => {
+    try {
+        const newReview = await Review.create({
+            description: req.body.description,
+            game_id: req.body.game_id,
+            user_id: req.session.user_id, 
+            created_time: new Date(), 
+            updated_time: new Date()
+        });
+        res.json(newReview);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to create review' });
     }
 });
