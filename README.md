@@ -60,7 +60,7 @@ DB_NAME='playpoint_db',
 DB_USER='postgres',
 DB_PASSWORD='',
 DB_PORT='localhost',
-RAPIDAPI_KEY='',
+RAPID_API_KEY='',
 4. **Start the server:**
 npm start
 5. **Seed data:**
@@ -68,6 +68,24 @@ npm run seed
 6. **Access the application:**
 Open your web browser and navigate to `http://localhost:3001`
 
+## Credit
+**Wall papers by:** https://backiee.com/wallpaper/synthwave-sunset/192305
+
+
+**API we used to get game and review date: RapidAPI:** https://rapidapi.com/opencritic-opencritic-default/api/opencritic-api
+
+
+**Our awesome team consists of:**  **Chase Friedman:** https://github.com/cfriedman2156, **Marie DeVoll:** https://github.com/mariedevoll, **Alex Capilla:** https://github.com/AlexCapilla, **Ronald (Paulee) Nelson:** https://github.com/Pauleerama93.
+
+
+## Screenshots
+Put screen shots here ----->
+
+
+## Contributing
+
+
+Contributions are welcome! If you have any ideas for improvements or new features, feel free to open an issue or submit a pull request!
 
 ## License
 
@@ -85,23 +103,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-### Credit
-**Wall papers by:** https://backiee.com/wallpaper/synthwave-sunset/192305
-
-
-**API we used to get game and review date: RapidAPI:** https://rapidapi.com/opencritic-opencritic-default/api/opencritic-api
-
-
-**Our awesome team consists of:**  **Chase Friedman:** https://github.com/cfriedman2156, **Marie DeVoll:** https://github.com/mariedevoll, **Alex Capilla:** https://github.com/AlexCapilla, **Ronald (Paulee) Nelson:** https://github.com/Pauleerama93.
-
-
-### Screenshots
-Put screen shots here ----->
-
-
-### Contributing
-
-
-Contributions are welcome! If you have any ideas for improvements or new features, feel free to open an issue or submit a pull request!
