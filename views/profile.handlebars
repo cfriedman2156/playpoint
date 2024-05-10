@@ -16,7 +16,7 @@
               <div class="card w-96 m-5 bg-base-100 shadow-xl">
                   <div class="card-body">
                       <div class="card-title flex justify-between">
-                          <h2>{{this.game.name}}</h2>
+                          <h2>{{this.gameName}}</h2>
                               <div class="flex-none dropdown">
                                   <button tabindex="0" role="button" class="btn btn-square btn-ghost">
                                     <i class="fa-solid fa-ellipsis"></i></button>
@@ -34,7 +34,6 @@
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                       </div>
                       <p>{{this.description}}</p>
-                      <p>By: {{user.name}}</p> <!-- Accessing user.name directly since it's part of the outer each context -->
                   </div>
               </div>
               {{/each}}
