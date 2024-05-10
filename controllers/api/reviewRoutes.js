@@ -38,25 +38,27 @@ router.put("/:id", withAuth, async (req, res) => {
   }
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+//delete review
+router.delete('/:id', withAuth, async (req, res) => {
+  console.log('Received delete request for review ID:', req.params.id);  // Log the received ID
   try {
-    const reviewData = await Review.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!reviewData) {
-      res.status(404).json({ message: "No review found with this id!" });
-      return;
-    }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
+      const result = await Review.destroy({
+          where: {
+              id: req.params.id,
+              user_id: req.session.user_id,
+          }
+      });
+      if (result > 0) {
+          res.json({ message: 'Review deleted successfully' });
+      } else {
+          res.status(404).send({ message: 'No review found with this ID' });
+      }
+  } catch (error) {
+      console.error('Error during review deletion:', error);  // Log the error
+      res.status(500).json({ error: 'Failed to delete review' });
   }
 });
+
 
 
 module.exports = router;

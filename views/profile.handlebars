@@ -13,29 +13,30 @@
           <h1 class="text-2xl text-center text-white font-bold">My Reviews:</h1>
           <div class="flex flex-wrap justify-evenly lg:flex-row wrap">
               {{#each reviews}}
-              <div class="card w-96 m-5 bg-base-100 shadow-xl">
-                  <div class="card-body">
-                      <div class="card-title flex justify-between">
-                          <h2>{{this.gameName}}</h2>
-                              <div class="flex-none dropdown">
-                                  <button tabindex="0" role="button" class="btn btn-square btn-ghost">
-                                    <i class="fa-solid fa-ellipsis"></i></button>
-                                  <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                      <li><a href="#">Update</a></li>
-                                      <li><a href="#">Delete</a></li>
-                                    </ul>
-                              </div>
-                      </div>
-                      <div class="rating rating-xs">
+                <div class="card w-96 m-5 bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="card-title flex justify-between">
+                            <h2>{{this.gameName}}</h2>
+                            <div class="flex-none dropdown">
+                                <button tabindex="0" class="btn btn-square btn-ghost dropdown-toggle" data-id="{{this.id}}"> <!-- Add data-id here -->
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a href="#" class="update-review" data-id="{{this.id}}">Update</a></li>
+                                    <li><a href="#" class="delete-review" data-id="{{this.id}}">Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rating rating-xs">
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                           <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
-                      </div>
-                      <p>{{this.description}}</p>
-                  </div>
-              </div>
+                        </div>
+                        <p>{{this.description}}</p>
+                    </div>
+                </div>
               {{/each}}
           </div>
         </div>
@@ -45,3 +46,4 @@
 </main>
 
 
+      

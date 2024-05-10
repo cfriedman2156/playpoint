@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Game, Review, User } = require('../../models');
+const withAuth = require("../../utils/auth");
 
 router.get('/', async (req, res) => {
     try {
@@ -27,6 +28,8 @@ router.get('/:id', async (req, res) => {
 module.exports = router;
 
 // put post delete code below
+
+
 
 //POST  Ask Drew/Kyle if we need to specify '/:id' for adding new game being reviewed to storage table
 router.post('/', async (req, res) => {

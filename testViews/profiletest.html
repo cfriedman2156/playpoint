@@ -47,10 +47,20 @@
                               <button tabindex="0" role="button" class="btn btn-square btn-ghost">
                                 <i class="fa-solid fa-ellipsis"></i>
                               </button>
-                              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                  <li><a href="#">Update</a></li>
-                                  <li><a href="#">Delete</a></li>
-                                </ul>
+                              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><a href="#" class="update-review" onclick="my_modal_2.showModal()">Update</a></li>
+                                  <dialog id="my_modal_2" class="modal">
+                                    <div class="modal-box">
+                                      <h3 class="font-bold text-lg">Update your review:</h3>
+                                        <textarea class="textarea textarea-bordered textarea-lg w-full max-w-xs m-2" name="reviewText" placeholder="Review" id="reviewText"></textarea>
+                                        <button class="btn btn-primary" id="submitReview">Submit</button>
+                                    </div>
+                                    <form method="dialog" class="modal-backdrop">
+                                      <button>close</button>
+                                    </form>
+                                  </dialog>
+                                <li><a href="#" class="delete-review">Delete</a></li>
+                              </ul>
                           </div>
                   </div>
                   <div class="rating rating-xs">

@@ -4,5 +4,17 @@
       "game_id": 1, 
       "user_id": 1,
       "stars": 1
+    },
+    {
+      "description": "Too many squares",
+      "game_id": 3, 
+      "user_id": 1,
+      "stars": 1
+    },
+    {
+      "description": "Toss a coin to your Witcher!",
+      "game_id": 2, 
+      "user_id": 3,
+      "stars": 1
     }
 ]
