@@ -1,9 +1,9 @@
 document.getElementById('submitReview').addEventListener('click', function(event) {
     event.preventDefault();
     const reviewText = document.getElementById('reviewText').value;
-    const rapidId = window.location.pathname.split('/').pop(); // Now fetching rapid_id from URL
+    const rapidId = window.location.pathname.split('/').pop(); 
 
-    // Fetch the actual game ID using the rapid_id
+    // get game_id thru rapid_id
     fetch(`/api/games/find-by-rapid-id/${rapidId}`, {
         method: 'GET',
         headers: {
@@ -12,9 +12,8 @@ document.getElementById('submitReview').addEventListener('click', function(event
     })
     .then(response => response.json())
     .then(gameData => {
-        const gameId = gameData.id; // Assuming the response contains the game id
+        const gameId = gameData.id;
 
-        // Now post the review with the actual game ID
         fetch('/api/reviews', {
             method: 'POST',
             body: JSON.stringify({
@@ -28,7 +27,7 @@ document.getElementById('submitReview').addEventListener('click', function(event
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            location.reload(); // Optionally reload the page to show the new review.
+            location.reload(); 
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -38,34 +37,3 @@ document.getElementById('submitReview').addEventListener('click', function(event
         console.error('Error fetching game ID:', error);
     });
 });
-
-
-
-
-
-// document.getElementById('submitReview').addEventListener('click', function(event) {
-//     event.preventDefault();
-//     const reviewText = document.getElementById('reviewText').value;
-//     const gameId = window.location.pathname.split('/').pop(); // Assuming URL like /games/:id
-    
-    
-
-//     fetch('/api/reviews', {
-//         method: 'POST',
-//         body: JSON.stringify({
-//             description: reviewText,
-//             game_id: gameId
-//         }),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log('Success:', data);
-//         //location.reload(); // Reload the page to show the new review.
-//     })
-//     .catch((error) => {
-//         console.error('Error:', error);
-//     });
-// });
